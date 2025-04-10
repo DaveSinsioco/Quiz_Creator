@@ -1,3 +1,11 @@
+# initializes files for appendices
+questions = []
+first_choices = []
+second_choices = []
+third_choices = []
+fourth_choices = []
+answers = []
+
 while True:
 
     # ask the user for question, choices, answer
