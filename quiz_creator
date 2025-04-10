@@ -45,15 +45,26 @@ while True:
 
 # randomizes the questions
 import random
-i= random.randint(0, len(questions)-1)
-print(f"Question: {questions[i]}")
-print(f"A: {first_choices[i]}")
-print(f"B: {second_choices[i]}")
-print(f"C: {third_choices[i]}")
-print(f"D: {fourth_choices[i]}")
 
-user_answer = input("Enter your answer (A/B/C/D): ")
-if user_answer.upper() == answers[i]:
-    print("Correct!")
-else:
-    print(f"Wrong! The correct answer is {answers[i]}.")
+while True:
+    i= random.randint(0, len(questions)-1)
+    print(f"Question: {questions[i]}")
+    print(f"A: {first_choices[i]}")
+    print(f"B: {second_choices[i]}")
+    rint(f"C: {third_choices[i]}")
+    print(f"D: {fourth_choices[i]}")
+
+    user_answer = input("Enter your answer (A/B/C/D): ")
+    if user_answer.upper() == answers[i]:
+        print("Correct!")
+    else:
+        print(f"Wrong! The correct answer is {answers[i]}.")
+
+# asks the user if they want to answer another question
+    answer_again = input("Do you want to answer another question? (y/n): ")
+    try:
+        if answer_again.lower() != 'y':
+        break
+    except ValueError:
+        print("Invalid input. Please enter 'y' or 'n'.")
+    
