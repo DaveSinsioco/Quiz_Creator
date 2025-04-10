@@ -15,9 +15,20 @@ while True:
     question_count += 1
 
     # ask the user for question, choices, answer
-    question = input("Enter the question: ")
+    question = input(f"Enter the question #{question_count}: ")
+    questions.append(question)
+
     first_choice = input("Enter the choice A: ")
+    first_choices.append(first_choice)
+
     second_choice = input("Enter the choice B: ")
+    second_choices.append(second_choice)
+
     third_choice = input("Enter the choice C: ")
+    third_choices.append(third_choice)
+
     fourth_choice = input("Enter the choice D: ")
-    answer = input("Enter the answer (A/B/C/D): ")
+    fourth_choices.append(fourth_choice)
+
+    answer = input("Enter the answer (A/B/C/D): ") 
+    answers.append(answer)
