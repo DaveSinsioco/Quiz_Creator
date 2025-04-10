@@ -15,7 +15,7 @@ while True:
     question_count += 1
 
     # asks the user to enter question, choices, answer
-    question = input("Enter the question: ")
+    question = input(f"Enter the question #{question_count}: ")
     questions.append(question)
 
     first_choice = input("Enter the choice A: ")
