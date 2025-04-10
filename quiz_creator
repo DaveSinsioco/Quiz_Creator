@@ -40,3 +40,20 @@ while True:
             break
     except ValueError:
         print("Invalid input. Please enter 'y' or 'n'.")
+
+# adds a code tester for the quiz maker
+
+# randomizes the questions
+import random
+i= random.randint(0, len(questions)-1)
+print(f"Question: {questions[i]}")
+print(f"A: {first_choices[i]}")
+print(f"B: {second_choices[i]}")
+print(f"C: {third_choices[i]}")
+print(f"D: {fourth_choices[i]}")
+
+user_answer = input("Enter your answer (A/B/C/D): ")
+if user_answer.upper() == answers[i]:
+    print("Correct!")
+else:
+    print(f"Wrong! The correct answer is {answers[i]}.")
