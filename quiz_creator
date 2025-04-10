@@ -64,7 +64,6 @@ while True:
     answer_again = input("Do you want to answer another question? (y/n): ")
     try:
         if answer_again.lower() != 'y':
-        break
+            break
     except ValueError:
         print("Invalid input. Please enter 'y' or 'n'.")
-    
