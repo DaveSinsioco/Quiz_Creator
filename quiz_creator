@@ -32,3 +32,11 @@ while True:
 
     answer = input("Enter the answer (A/B/C/D): ") 
     answers.append(answer)
+
+    # ask if the user wants to add another question
+    add_another = input("Do you want to add another question? (y/n): ")
+    try:
+        if add_another.lower() != 'y':
+            break
+    except ValueError:
+        print("Invalid input. Please enter 'y' or 'n'.")
