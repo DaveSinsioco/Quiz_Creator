@@ -1,1 +1,9 @@
+while True:
 
+    # ask the user for question, choices, answer
+    question = input("Enter the question: ")
+    first_choice = input("Enter the choice A: ")
+    second_choice = input("Enter the choice B: ")
+    third_choice = input("Enter the choice C: ")
+    fourth_choice = input("Enter the choice D: ")
+    answer = input("Enter the answer (A/B/C/D): ")
