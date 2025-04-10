@@ -6,7 +6,13 @@ third_choices = []
 fourth_choices = []
 answers = []
 
+# initializes the count for each question
+question_count = 0
+
 while True:
+
+    # increment the question count
+    question_count += 1
 
     # asks the user to enter question, choices, answer
     question = input("Enter the question: ")
