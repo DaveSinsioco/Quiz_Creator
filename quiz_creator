@@ -51,7 +51,7 @@ while True:
     print(f"Question: {questions[i]}")
     print(f"A: {first_choices[i]}")
     print(f"B: {second_choices[i]}")
-    rint(f"C: {third_choices[i]}")
+    print(f"C: {third_choices[i]}")
     print(f"D: {fourth_choices[i]}")
 
     user_answer = input("Enter your answer (A/B/C/D): ")
