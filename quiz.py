@@ -66,6 +66,9 @@ wrong_answers_third_choice = []
 wrong_answers_fourth_choice = []
 wrong_answers = []
 
+# counts wrong answers for scoring
+wrong_answer_count = 0
+
 while True:
     i= random.randint(0, len(quiz_questions)- 1)
     print(f"Question: {quiz_questions[i]}")
@@ -80,7 +83,7 @@ while True:
     else:
         print(f"Wrong!.")
 
-        # appends the wrong answers so it can be shown at the end
+        # appends the wrong answers so it can be shown at the end, add count to wrong answers
         
         wrong_answers_question.append(quiz_questions[i])
         wrong_answers_first_choice.append(quiz_first_choices[i])
@@ -88,6 +91,7 @@ while True:
         wrong_answers_third_choice.append(quiz_third_choices[i])
         wrong_answers_fourth_choice.append(quiz_fourth_choices[i])
         wrong_answers.append(quiz_answers[i])
+        wrong_answer_count += 1
 
     # removes the question from the list
 
@@ -107,8 +111,10 @@ while True:
     except ValueError:
         print("Invalid input. Please enter 'y' or 'n'.")
 
-# shows the wrong answers at the end
+# shows the score
+print(f"You got {len(question) - wrong_answer_count} out of {len(question)}.")
 
+# shows the wrong answers at the end
 print("You got the following questions wrong:")
 for i in range(len(wrong_answers_question)):
     print(f"Question: {wrong_answers_question[i]}")
@@ -117,3 +123,6 @@ for i in range(len(wrong_answers_question)):
     print(f"C: {wrong_answers_third_choice[i]}")
     print(f"D: {wrong_answers_fourth_choice[i]}")
     print(f"Correct answer: {wrong_answers[i]}")
+
+# thank user for using the quiz
+print("Thank you for using the quiz!")
