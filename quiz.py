@@ -33,14 +33,10 @@ while True:
     answer = input("Enter the answer (A/B/C/D): ") 
     answers.append(answer)
 
-    # ask if the user wants to stop adding questions
-
-    stop_adding = input('Enter "N" or "n" to stop adding more questions, else enter any letter: ')
-    try:
-        if stop_adding.lower() == "n":
-            break
-    except ValueError:
-        print("Invalid input. Please enter a valid input.")
+    # ask if the user wants to add another question
+    add_another = input("Do you want to add another question? (y/n): ")
+    if add_another.lower() != 'y':
+        break
 
 # replicates the saved question and answer to new appendices for user to try and now affect the main appendix
 
@@ -56,8 +52,14 @@ quiz_answers = answers
 # randomizes the questions
 import random
 
+# asks the user if they want to answer the questions
+answer_questions = input("Do you want to answer the questions? (y/n): ")
+if answer_questions.lower() != 'y':
+    print("Exiting the quiz.")
+    exit()
+
 while True:
-    i= random.randint(0, len(quiz_questions)-1)
+    i= random.randint(0, len(quiz_questions)- 1)
     print(f"Question: {quiz_questions[i]}")
     print(f"A: {quiz_first_choices[i]}")
     print(f"B: {quiz_second_choices[i]}")
@@ -68,7 +70,15 @@ while True:
     if user_answer.upper() == quiz_answers[i]:
         print("Correct!")
     else:
-        print(f"Wrong! The correct answer is {answers[i]}.")
+        print(f"Wrong! The correct answer is {quiz_answers[i]}.")
+
+    # removes the question from the list
+    quiz_questions.pop(i)
+    quiz_first_choices.pop(i)
+    quiz_second_choices.pop(i)
+    quiz_third_choices.pop(i)
+    quiz_fourth_choices.pop(i)
+    quiz_answers.pop(i)
 
 # asks the user if they want to answer another question
     answer_again = input("Do you want to answer another question? (y/n): ")
