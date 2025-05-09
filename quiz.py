@@ -33,13 +33,23 @@ while True:
     answer = input("Enter the answer (A/B/C/D): ") 
     answers.append(answer)
 
-    # ask if the user wants to add another question
-    add_another = input("Do you want to add another question? (y/n): ")
+    # ask if the user wants to stop adding questions
+
+    stop_adding = input('Enter "N" or "n" to stop adding more questions, else enter any letter: ')
     try:
-        if add_another.lower() != 'y':
+        if stop_adding.lower() == "n":
             break
     except ValueError:
-        print("Invalid input. Please enter 'y' or 'n'.")
+        print("Invalid input. Please enter a valid input.")
+
+# replicates the saved question and answer to new appendices for user to try and now affect the main appendix
+
+quiz_questions = questions
+quiz_first_choices = first_choices
+quiz_second_choices = second_choices
+quiz_third_choices = third_choices
+quiz_fourth_choices = fourth_choices
+quiz_answers = answers
 
 # adds a code tester for the quiz maker
 
@@ -47,15 +57,15 @@ while True:
 import random
 
 while True:
-    i= random.randint(0, len(questions)-1)
-    print(f"Question: {questions[i]}")
-    print(f"A: {first_choices[i]}")
-    print(f"B: {second_choices[i]}")
-    print(f"C: {third_choices[i]}")
-    print(f"D: {fourth_choices[i]}")
+    i= random.randint(0, len(quiz_questions)-1)
+    print(f"Question: {quiz_questions[i]}")
+    print(f"A: {quiz_first_choices[i]}")
+    print(f"B: {quiz_second_choices[i]}")
+    print(f"C: {quiz_third_choices[i]}")
+    print(f"D: {quiz_fourth_choices[i]}")
 
     user_answer = input("Enter your answer (A/B/C/D): ")
-    if user_answer.upper() == answers[i]:
+    if user_answer.upper() == quiz_answers[i]:
         print("Correct!")
     else:
         print(f"Wrong! The correct answer is {answers[i]}.")
