@@ -58,6 +58,14 @@ if answer_questions.lower() != 'y':
     print("Exiting the quiz.")
     exit()
 
+# initialize the wrong answers and it's right answer to be shown at the end
+wrong_answers_question = []
+wrong_answers_first_choice = []
+wrong_answers_second_choice = []
+wrong_answers_third_choice = []
+wrong_answers_fourth_choice = []
+wrong_answers = []
+
 while True:
     i= random.randint(0, len(quiz_questions)- 1)
     print(f"Question: {quiz_questions[i]}")
@@ -70,9 +78,19 @@ while True:
     if user_answer.upper() == quiz_answers[i]:
         print("Correct!")
     else:
-        print(f"Wrong! The correct answer is {quiz_answers[i]}.")
+        print(f"Wrong!.")
+
+        # appends the wrong answers so it can be shown at the end
+        
+        wrong_answers_question.append(quiz_questions[i])
+        wrong_answers_first_choice.append(quiz_first_choices[i])
+        wrong_answers_second_choice.append(quiz_second_choices[i])
+        wrong_answers_third_choice.append(quiz_third_choices[i])
+        wrong_answers_fourth_choice.append(quiz_fourth_choices[i])
+        wrong_answers.append(quiz_answers[i])
 
     # removes the question from the list
+
     quiz_questions.pop(i)
     quiz_first_choices.pop(i)
     quiz_second_choices.pop(i)
@@ -81,9 +99,21 @@ while True:
     quiz_answers.pop(i)
 
 # asks the user if they want to answer another question
+
     answer_again = input("Do you want to answer another question? (y/n): ")
     try:
         if answer_again.lower() != 'y':
             break
     except ValueError:
         print("Invalid input. Please enter 'y' or 'n'.")
+
+# shows the wrong answers at the end
+
+print("You got the following questions wrong:")
+for i in range(len(wrong_answers_question)):
+    print(f"Question: {wrong_answers_question[i]}")
+    print(f"A: {wrong_answers_first_choice[i]}")
+    print(f"B: {wrong_answers_second_choice[i]}")
+    print(f"C: {wrong_answers_third_choice[i]}")
+    print(f"D: {wrong_answers_fourth_choice[i]}")
+    print(f"Correct answer: {wrong_answers[i]}")
