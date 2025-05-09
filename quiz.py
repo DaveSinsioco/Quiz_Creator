@@ -104,8 +104,12 @@ while quiz_questions:
 # shows the score
 print(f"Your score is {(question_count) - wrong_answer_count} out of {(question_count)}.")
 
-# shows the wrong answers at the end
-print("You got the following questions wrong:")
+# counts the wrong answer, if there are no wrong answers, it will not show the wrong answers
+if wrong_answer_count == 0:
+    print("You got all the answers right!")
+else: 
+    print("You got the following questions wrong:")
+    
 for i in range(len(wrong_answers_question)):
     print(f"Question: {wrong_answers_question[i]}")
     print(f"A: {wrong_answers_first_choice[i]}")
