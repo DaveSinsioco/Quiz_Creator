@@ -69,37 +69,40 @@ wrong_answers = []
 # counts wrong answers for scoring
 wrong_answer_count = 0
 
-while True:
-    i= random.randint(0, len(quiz_questions)- 1)
-    print(f"Question: {quiz_questions[i]}")
-    print(f"A: {quiz_first_choices[i]}")
-    print(f"B: {quiz_second_choices[i]}")
-    print(f"C: {quiz_third_choices[i]}")
-    print(f"D: {quiz_fourth_choices[i]}")
+while quiz_questions:
+    num = random.randint(0, len(quiz_questions)- 1)
+    print(f"Question: {quiz_questions[num]}")
+    print(f"A: {quiz_first_choices[num]}")
+    print(f"B: {quiz_second_choices[num]}")
+    print(f"C: {quiz_third_choices[num]}")
+    print(f"D: {quiz_fourth_choices[num]}")
 
     user_answer = input("Enter your answer (A/B/C/D): ")
-    if user_answer.upper() != quiz_answers[i]:
+    # checks if the answer is valid
+    while user_answer.upper() not in ['A', 'B', 'C', 'D']:
+        print("Invalid answer. Please enter A, B, C, or D.")
+        user_answer = input("Enter your answer (A/B/C/D): ")
 
         # appends the wrong answers so it can be shown at the end, add count to wrong answers 
-        wrong_answers_question.append(quiz_questions[i])
-        wrong_answers_first_choice.append(quiz_first_choices[i])
-        wrong_answers_second_choice.append(quiz_second_choices[i])
-        wrong_answers_third_choice.append(quiz_third_choices[i])
-        wrong_answers_fourth_choice.append(quiz_fourth_choices[i])
-        wrong_answers.append(quiz_answers[i])
+        wrong_answers_question.append(quiz_questions[num])
+        wrong_answers_first_choice.append(quiz_first_choices[num])
+        wrong_answers_second_choice.append(quiz_second_choices[num])
+        wrong_answers_third_choice.append(quiz_third_choices[num])
+        wrong_answers_fourth_choice.append(quiz_fourth_choices[num])
+        wrong_answers.append(quiz_answers[num])
         wrong_answer_count += 1
 
     # removes the question from the list
 
-    quiz_questions.pop(i)
-    quiz_first_choices.pop(i)
-    quiz_second_choices.pop(i)
-    quiz_third_choices.pop(i)
-    quiz_fourth_choices.pop(i)
-    quiz_answers.pop(i)
+    quiz_questions.pop(num)
+    quiz_first_choices.pop(num)
+    quiz_second_choices.pop(num)
+    quiz_third_choices.pop(num)
+    quiz_fourth_choices.pop(num)
+    quiz_answers.pop(num)
 
 # shows the score
-print(f"You got {(question_count) - wrong_answer_count} out of {(question_count)}.")
+print(f"Your score is {(question_count) - wrong_answer_count} out of {(question_count)}.")
 
 # shows the wrong answers at the end
 print("You got the following questions wrong:")
