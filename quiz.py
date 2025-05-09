@@ -78,13 +78,9 @@ while True:
     print(f"D: {quiz_fourth_choices[i]}")
 
     user_answer = input("Enter your answer (A/B/C/D): ")
-    if user_answer.upper() == quiz_answers[i]:
-        print("Correct!")
-    else:
-        print(f"Wrong!.")
+    if user_answer.upper() != quiz_answers[i]:
 
-        # appends the wrong answers so it can be shown at the end, add count to wrong answers
-        
+        # appends the wrong answers so it can be shown at the end, add count to wrong answers 
         wrong_answers_question.append(quiz_questions[i])
         wrong_answers_first_choice.append(quiz_first_choices[i])
         wrong_answers_second_choice.append(quiz_second_choices[i])
@@ -102,17 +98,8 @@ while True:
     quiz_fourth_choices.pop(i)
     quiz_answers.pop(i)
 
-# asks the user if they want to answer another question
-
-    answer_again = input("Do you want to answer another question? (y/n): ")
-    try:
-        if answer_again.lower() != 'y':
-            break
-    except ValueError:
-        print("Invalid input. Please enter 'y' or 'n'.")
-
 # shows the score
-print(f"You got {len(question) - wrong_answer_count} out of {len(question)}.")
+print(f"You got {(question_count) - wrong_answer_count} out of {(question_count)}.")
 
 # shows the wrong answers at the end
 print("You got the following questions wrong:")
