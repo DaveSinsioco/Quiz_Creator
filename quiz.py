@@ -83,6 +83,9 @@ while quiz_questions:
         print("Invalid answer. Please enter A, B, C, or D.")
         user_answer = input("Enter your answer (A/B/C/D): ")
 
+    # checks if the answer is correct
+    if user_answer.upper() != quiz_answers[num]:
+        
         # appends the wrong answers so it can be shown at the end, add count to wrong answers 
         wrong_answers_question.append(quiz_questions[num])
         wrong_answers_first_choice.append(quiz_first_choices[num])
@@ -109,7 +112,7 @@ if wrong_answer_count == 0:
     print("You got all the answers right!")
 else: 
     print("You got the following questions wrong:")
-    
+
 for i in range(len(wrong_answers_question)):
     print(f"Question: {wrong_answers_question[i]}")
     print(f"A: {wrong_answers_first_choice[i]}")
