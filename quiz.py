@@ -1,12 +1,22 @@
-# initializes files for appendices
+# Encalsulates all the functions in "Quiz"
+class Quiz:
+    def __init__(self):       
+    # initializes files for appendices, initializes question count
+        self.questions = []
+        self.first_choices = []
+        self.second_choices = []
+        self.third_choices = []
+        self.fourth_choices = []
+        self.answers = []
+        self.question_count = 0
+
+# initializes files for appendices, initializes question count
 questions = []
 first_choices = []
 second_choices = []
 third_choices = []
 fourth_choices = []
 answers = []
-
-# initializes question count
 question_count = 0
 
 while True:
