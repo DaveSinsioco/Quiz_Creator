@@ -10,52 +10,45 @@ class Quiz:
         self.answers = []
         self.question_count = 0
 
-# initializes files for appendices, initializes question count
-questions = []
-first_choices = []
-second_choices = []
-third_choices = []
-fourth_choices = []
-answers = []
-question_count = 0
+    # let's the user add questions, choices, and answers
+    def add_questions(self):
 
-while True:
+        # increment question count for each question, ask the user for question
+        self.question_count += 1
+        question = input(f"Enter question {self.question_count}: ")
+        self.questions.append(question)
 
-    # increment question count for each question
-    question_count += 1
+        # ask the user for choices, answer
+        first_choice = input("Enter the choice A: ")
+        self.first_choices.append(first_choice)
 
-    # ask the user for question, choices, answer
-    question = input(f"Enter the question #{question_count}: ")
-    questions.append(question)
+        second_choice = input("Enter the choice B: ")
+        self.second_choices.append(second_choice)
 
-    first_choice = input("Enter the choice A: ")
-    first_choices.append(first_choice)
+        third_choice = input("Enter the choice C: ")
+        self.third_choices.append(third_choice)
 
-    second_choice = input("Enter the choice B: ")
-    second_choices.append(second_choice)
+        fourth_choice = input("Enter the choice D: ")
+        self.fourth_choices.append(fourth_choice)
 
-    third_choice = input("Enter the choice C: ")
-    third_choices.append(third_choice)
+        answer = input("Enter the answer (A/B/C/D): ") 
+        self.answers.append(answer)
 
-    fourth_choice = input("Enter the choice D: ")
-    fourth_choices.append(fourth_choice)
+        # ask if the user wants to add another question
+        add_another_question = input("Do you want to add another question? (y/n): ")
+        if add_another_question.lower() != 'y':
+            return
 
-    answer = input("Enter the answer (A/B/C/D): ") 
-    answers.append(answer)
-
-    # ask if the user wants to add another question
-    add_another = input("Do you want to add another question? (y/n): ")
-    if add_another.lower() != 'y':
-        break
+quiz = Quiz()
 
 # replicates the saved question and answer to new appendices for user to try and now affect the main appendix
 
-quiz_questions = questions
-quiz_first_choices = first_choices
-quiz_second_choices = second_choices
-quiz_third_choices = third_choices
-quiz_fourth_choices = fourth_choices
-quiz_answers = answers
+quiz_questions = quiz.questions()
+quiz_first_choices = quiz.first_choices
+quiz_second_choices = quiz.second_choices
+quiz_third_choices = quiz.third_choices
+quiz_fourth_choices = quiz.fourth_choices
+quiz_answers = quiz.answers
 
 # adds a code tester for the quiz maker
 
@@ -115,7 +108,7 @@ while quiz_questions:
     quiz_answers.pop(num)
 
 # shows the score
-print(f"Your score is {(question_count) - wrong_answer_count} out of {(question_count)}.")
+print(f"Your score is {(quiz.question_count) - wrong_answer_count} out of {(quiz.question_count)}.")
 
 # counts the wrong answer, if there are no wrong answers, it will not show the wrong answers
 if wrong_answer_count == 0:
