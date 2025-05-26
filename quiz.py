@@ -1,3 +1,5 @@
+import random
+
 # Encalsulates all the functions in "Quiz"
 class Quiz:
     def __init__(self):       
@@ -38,39 +40,26 @@ class Quiz:
         add_another_question = input("Do you want to add another question? (y/n): ")
         if add_another_question.lower() != 'y':
             return
+        
+    # asks the user if they want to answer the questions
+    def ask_to_answer(self):
+        answer_questions = input("Do you want to answer the questions? (y/n): ")
+        if answer_questions.lower() != 'y':
+            print("Exiting the quiz.")
+            exit()
+
+    # quiz taking function
+    def take_quiz(self):
+        # initialize the wrong answers and it's right answer to be shown at the end, counts wrong answers for scoring
+        self.wrong_answers_question = []
+        self.wrong_answers_first_choice = []
+        self.wrong_answers_second_choice = []
+        self.wrong_answers_third_choice = []
+        self.wrong_answers_fourth_choice = []
+        self.wrong_answers = []
+        self.wrong_answer_count = 0
 
 quiz = Quiz()
-
-# replicates the saved question and answer to new appendices for user to try and now affect the main appendix
-
-quiz_questions = quiz.questions()
-quiz_first_choices = quiz.first_choices
-quiz_second_choices = quiz.second_choices
-quiz_third_choices = quiz.third_choices
-quiz_fourth_choices = quiz.fourth_choices
-quiz_answers = quiz.answers
-
-# adds a code tester for the quiz maker
-
-# randomizes the questions
-import random
-
-# asks the user if they want to answer the questions
-answer_questions = input("Do you want to answer the questions? (y/n): ")
-if answer_questions.lower() != 'y':
-    print("Exiting the quiz.")
-    exit()
-
-# initialize the wrong answers and it's right answer to be shown at the end
-wrong_answers_question = []
-wrong_answers_first_choice = []
-wrong_answers_second_choice = []
-wrong_answers_third_choice = []
-wrong_answers_fourth_choice = []
-wrong_answers = []
-
-# counts wrong answers for scoring
-wrong_answer_count = 0
 
 while quiz_questions:
     num = random.randint(0, len(quiz_questions)- 1)
