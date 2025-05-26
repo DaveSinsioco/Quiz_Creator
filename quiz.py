@@ -94,22 +94,22 @@ class Quiz:
             self.fourth_choices.pop(num)
             self.answers.pop(num)
 
-# shows the score
-print(f"Your score is {(quiz_question_count) - wrong_answer_count} out of {(quiz_question_count)}.")
-
-# counts the wrong answer, if there are no wrong answers, it will not show the wrong answers
-if wrong_answer_count == 0:
-    print("You got all the answers right!")
-else: 
-    print("You got the following questions wrong:")
-
-for i in range(len(wrong_answers_question)):
-    print(f"Question: {wrong_answers_question[i]}")
-    print(f"A: {wrong_answers_first_choice[i]}")
-    print(f"B: {wrong_answers_second_choice[i]}")
-    print(f"C: {wrong_answers_third_choice[i]}")
-    print(f"D: {wrong_answers_fourth_choice[i]}")
-    print(f"Correct answer: {wrong_answers[i]}")
-
-# thank user for using the quiz
-print("Thank you for using the quiz!")
+    # shows the score
+    def show_score(self):
+        quiz_score = (self.question_count - self.wrong_answer_count)
+        print(f"Your score is {quiz_score} out of {self.question_count}.")
+        
+        # counts the wrong answer, if there are no wrong answers, it will not show the wrong answers
+        if self.wrong_answer_count == 0:
+            print("You got all the answers right!")
+        else: 
+            print("You got the following questions wrong:")
+            for count in range(len(self.wrong_answers_question)):
+                print(f"Question: {self.wrong_answers_question[count]}")
+                print(f"A: {self.wrong_answers_first_choice[count]}")
+                print(f"B: {self.wrong_answers_second_choice[count]}")
+                print(f"C: {self.wrong_answers_third_choice[count]}")
+                print(f"D: {self.wrong_answers_fourth_choice[count]}")
+                print(f"Correct Answer: {self.wrong_answers[count]}")
+                
+        print("Thank you for taking the quiz!")
