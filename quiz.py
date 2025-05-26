@@ -122,7 +122,6 @@ class Quiz:
                 
         print("Thank you for taking the quiz!")
 
-
     # Main function to run the quiz
     def main(self):
         while True:
