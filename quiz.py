@@ -3,7 +3,7 @@ import random
 # Encalsulates all the functions in "Quiz"
 class Quiz:
     def __init__(self):       
-    # initializes files for appendices, initializes question count
+        # initializes files for appendices, initializes question count
         self.questions = []
         self.first_choices = []
         self.second_choices = []
@@ -11,8 +11,16 @@ class Quiz:
         self.fourth_choices = []
         self.answers = []
         self.question_count = 0
+        # initialize the wrong answers and it's right answer to be shown at the end, counts wrong answers for scoring
+        self.wrong_answers_question = []
+        self.wrong_answers_first_choice = []
+        self.wrong_answers_second_choice = []
+        self.wrong_answers_third_choice = []
+        self.wrong_answers_fourth_choice = []
+        self.wrong_answers = []
+        self.wrong_answer_count = 0
 
-    # let's the user add questions, choices, and answers
+    # lets the user add questions, choices, and answers
     def add_questions(self):
 
         # increment question count for each question, ask the user for question
@@ -35,7 +43,12 @@ class Quiz:
 
         answer = input("Enter the answer (A/B/C/D): ") 
         self.answers.append(answer)
-
+        # checks if the answer is valid
+        while answer.upper() not in ['A', 'B', 'C', 'D']:
+            print("Invalid answer. Please enter A, B, C, or D.")
+            answer = input("Enter the answer (A/B/C/D): ")
+            self.answers[-1] = answer
+            
         # ask if the user wants to add another question
         add_another_question = input("Do you want to add another question? (y/n): ")
         if add_another_question.lower() != 'y':
@@ -50,14 +63,6 @@ class Quiz:
 
     # quiz taking function
     def take_quiz(self):
-        # initialize the wrong answers and it's right answer to be shown at the end, counts wrong answers for scoring
-        self.wrong_answers_question = []
-        self.wrong_answers_first_choice = []
-        self.wrong_answers_second_choice = []
-        self.wrong_answers_third_choice = []
-        self.wrong_answers_fourth_choice = []
-        self.wrong_answers = []
-        self.wrong_answer_count = 0
 
         while self.questions:
             num = random.randint(0, len(self.questions)- 1)
