@@ -59,45 +59,43 @@ class Quiz:
         self.wrong_answers = []
         self.wrong_answer_count = 0
 
-quiz = Quiz()
+        while self.questions:
+            num = random.randint(0, len(self.questions)- 1)
+            print(f"Question: {self.questions[num]}")
+            print(f"A: {self.first_choices[num]}")
+            print(f"B: {self.second_choices[num]}")
+            print(f"C: {self.third_choices[num]}")
+            print(f"D: {self.fourth_choices[num]}")
 
-while quiz_questions:
-    num = random.randint(0, len(quiz_questions)- 1)
-    print(f"Question: {quiz_questions[num]}")
-    print(f"A: {quiz_first_choices[num]}")
-    print(f"B: {quiz_second_choices[num]}")
-    print(f"C: {quiz_third_choices[num]}")
-    print(f"D: {quiz_fourth_choices[num]}")
-
-    user_answer = input("Enter your answer (A/B/C/D): ")
-    # checks if the answer is valid
-    while user_answer.upper() not in ['A', 'B', 'C', 'D']:
-        print("Invalid answer. Please enter A, B, C, or D.")
-        user_answer = input("Enter your answer (A/B/C/D): ")
+            user_answer = input("Enter your answer (A/B/C/D): ")
+            # checks if the answer is valid
+            while user_answer.upper() not in ['A', 'B', 'C', 'D']:
+                print("Invalid answer. Please enter A, B, C, or D.")
+                user_answer = input("Enter your answer (A/B/C/D): ")
 
     # checks if the answer is correct
-    if user_answer.upper() != quiz_answers[num]:
+    def check_answer(self, user_answer, num):
+        if user_answer.upper() != self.answers[num]:
+            wrong_answer_count += 1
         
-        # appends the wrong answers so it can be shown at the end, add count to wrong answers 
-        wrong_answers_question.append(quiz_questions[num])
-        wrong_answers_first_choice.append(quiz_first_choices[num])
-        wrong_answers_second_choice.append(quiz_second_choices[num])
-        wrong_answers_third_choice.append(quiz_third_choices[num])
-        wrong_answers_fourth_choice.append(quiz_fourth_choices[num])
-        wrong_answers.append(quiz_answers[num])
-        wrong_answer_count += 1
-
-    # removes the question from the list
-
-    quiz_questions.pop(num)
-    quiz_first_choices.pop(num)
-    quiz_second_choices.pop(num)
-    quiz_third_choices.pop(num)
-    quiz_fourth_choices.pop(num)
-    quiz_answers.pop(num)
+            # appends the wrong answers so it can be shown at the end, add count to wrong answers 
+            self.wrong_answers_question.append(self.questions[num])
+            self.wrong_answers_first_choice.append(self.first_choices[num])
+            self.wrong_answers_second_choice.append(self.second_choices[num])
+            self.wrong_answers_third_choice.append(self.third_choices[num])
+            self.wrong_answers_fourth_choice.append(self.fourth_choices[num])
+            self.wrong_answers.append(self.answers[num])
+            
+            # removes the question from the list
+            self.questions.pop(num)
+            self.first_choices.pop(num)
+            self.second_choices.pop(num)
+            self.third_choices.pop(num)
+            self.fourth_choices.pop(num)
+            self.answers.pop(num)
 
 # shows the score
-print(f"Your score is {(quiz.question_count) - wrong_answer_count} out of {(quiz.question_count)}.")
+print(f"Your score is {(quiz_question_count) - wrong_answer_count} out of {(quiz_question_count)}.")
 
 # counts the wrong answer, if there are no wrong answers, it will not show the wrong answers
 if wrong_answer_count == 0:
