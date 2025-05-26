@@ -94,13 +94,13 @@ class Quiz:
             self.wrong_answers_fourth_choice.append(self.fourth_choices[num])
             self.wrong_answers.append(self.answers[num])
             
-            # removes the question from the list
-            self.questions.pop(num)
-            self.first_choices.pop(num)
-            self.second_choices.pop(num)
-            self.third_choices.pop(num)
-            self.fourth_choices.pop(num)
-            self.answers.pop(num)
+        # removes the question from the list
+        self.questions.pop(num)
+        self.first_choices.pop(num)
+        self.second_choices.pop(num)
+        self.third_choices.pop(num)
+        self.fourth_choices.pop(num)
+        self.answers.pop(num)
 
     # shows the score
     def show_score(self):
